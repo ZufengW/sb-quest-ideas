@@ -6,12 +6,21 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // EXTRA FUNCTION FOR DISPLAYING in the html element with id="output"
 
-function more_random(z) {
+  function more_random(z) {
     var a=document.getElementById("output"),b=parseInt(a.rows);
     if(b<1)b=1;
     b=generate_list(z,b);
-    a.value=b.join("\n")
-}
+    a.value=b.join("\n");
+  }
+  
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// NEW FUNCTION for changing the content of a single-value linking table
+// type is the 'name' of the table, val is new 'value' to put (both strings)
+
+  function change_content(type,val) {
+    gen_data[type][0] = val;
+  }
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // generator function
 
