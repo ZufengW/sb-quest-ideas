@@ -1,6 +1,6 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // data_file_one.js
-
+// written by Oxidis
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // json format
 // http://en.wikipedia.org/wiki/JSON
@@ -14,7 +14,6 @@
     'The {quest_giver} seeks an adventurer {quest_type}, and then {quest_type}. {quest_twist}.\n',
     'The {quest_giver} wants {quest_type}. You must prevent this from happening.\n',
   ];
-
   gen_data['quest_giver'] = [
     '{race} {occupation} named {person_name}',
     '{personality} {race} {occupation} named {person_name}',
@@ -29,8 +28,9 @@
   gen_data['occupation'] = [
     'priest', 'guard','soldier','townsperson','merchant','civilian','ex-adventurer',
     'noble','elder','captain','farmer','miner','scout','aristocrat','chef','child',
-    'researcher','scholar','intellectual','explorer','bounty hunter','shop owner',
-    'assistant','representative of the {group_type}',
+    'researcher','scholar','intellectual','librarian','professor','explorer',
+    'writer','shipwright','engineer',
+    'bounty hunter','shop owner','assistant','representative of the {group_type}',
   ];
   gen_data['personality'] = [
     'friendly','supportive','wise','respected','trustworthy',
@@ -42,12 +42,16 @@
     '4-5': 'glitch',
     '6-7': 'avian',
     '8-9': 'hylotl',
-  '10-11': 'apex',
-     '12': 'floran',
-     '13': 'novakid'
+    '10-11': 'apex',
+    '12': 'floran',
+    '13': 'novakid'
   };
 
   gen_data['quest_type'] = [
+    '{quest_all}'
+  ];
+
+  gen_data['quest_all'] = [
     'to recover {collective_item} {modifier} {plural_item} from the {unique_planetary_location}',
     'to recover {collective_item} {plural_item} from the {unique_planetary_location}',
     'to discover the hidden {unique_planetary_location}',
@@ -59,6 +63,9 @@
     'to discover the fate of {collective_item} {plural_item} lost in the {unique_planetary_location}',
     'to recover and destroy an evil {unique_object_type} from the {unique_danger_location}',
     'to obtain ITEM',
+    'to gather RESOURCES',
+    'to FARM SOMETHING',
+    'to MINE SOMETHING',
     'to supply {collective_item} {plural_item}',
     'to examine a {adj_desc} {unique_object_type}',
     'to capture MONSTER',
@@ -70,10 +77,10 @@
     'to tame MONSTER, which can be found in the {unique_geo_location}',
     'to deliver {collective_item} {plural_item} to {settlement_name} {settlement_type}',
     'to deliver a message to {person_name}',
+    'to deliver a {adj_desc} ITEM to {person_name}',
     'to throw a party',
     'to organise a party to celebrate {person_name}\'s birthday',
     'to prepare for EVENT',
-    'to deliver a {adj_desc} ITEM to {person_name}',
     'to talk to {person_name} who is currently {prep_place}',
     'to ask {person_name} about the {adj_desc} topic of {plural_item}',
     'to disguise himself as a {occupation} and DO SOMETHING',
@@ -111,15 +118,13 @@
     'to inform everyone of URGENT NEWS',
     'to craft {a_weapon}',
     'to SCAN a {modifier} ITEM she had found',
-    'to FARM SOMETHING',
-    'to MINE SOMETHING',
     'to trigger the STATUS PODS',
     'to design {a_weapon}',
     'to test {a_weapon} she had designed',
     'to make an important CHOICE',
     'to decide on a {adj_desc} CHOICE',
     'to choose whether to buy {a_weapon} or {a_weapon}',
-    'to participate in a colliseum',
+    'to participate in a coliseum',
     'to participate in a hunt for a {modifier} MONSTER',
     'to defend the {building_type} from a group of MONSTERS',
     'to defend the {settlement_type} from an army of {collective_enemy}',
@@ -136,6 +141,7 @@
     'to complete a puzzle challenge',
     'to complete an obstacle course',
     'to complete a footrace before {person_name} does',
+    'to explore the {settlement_name} {geo_type}',
     'to explore the {unique_danger_location}',
     'to navigate the {unique_danger_location}',
     'to {help_place} a {def_adj_pos} {building_type}',
@@ -143,6 +149,8 @@
     'to {help_place} the {def_adj_pos} {building_type}',
     'to {help_place} the {building_type}',
     'to {help_place} a {settlement_type}',
+    'to {help_place} a new {building_type}',
+    'to {help_place} a new {settlement_type}',
     'to {help_place} a {def_adj_pos} {settlement_type}',
     'to {help_place} the {def_adj_pos} {settlement_type}',
     'to {help_place} the {settlement_type}',
@@ -154,6 +162,7 @@
     'to retake the {settlement_type} from the {collective_enemy}',
     'to capture {unique_enemy}',
     'to assassinate {unique_enemy}, currently believed to be in {unique_danger_location}',
+    'to fight {person_name} in a duel',
     'to defeat {unique_enemy}',
     'to defeat the {collective_enemy} {prep_place}',
     'to hunt down and kill {unique_enemy}',
@@ -171,6 +180,166 @@
     'to thwart the monstrous plan of {unique_enemy}',
     'to thwart the monstrous plan of the {collective_enemy}'
   ];
+  gen_data['quest_fetch'] = [
+    'to recover {collective_item} {modifier} {plural_item} from the {unique_planetary_location}',
+    'to recover {collective_item} {plural_item} from the {unique_planetary_location}',
+    'to recover and destroy an evil {unique_object_type} from the {unique_danger_location}',
+    'to find and bring back lost a PET or FRIEND or ITEM, last seen {prep_place}',
+    'to find and bring back the {unique_object_type} {group_enemy_title}, lost in the {def_adj_pos} {geo_type}',
+    'to slay MONSTER and retrieve its BRAIN',
+    'to obtain ITEM',
+    'to gather RESOURCES',
+    'to supply {collective_item} {plural_item}',
+    'to FARM SOMETHING',
+    'to MINE SOMETHING',
+    'to steal the {unique_object_type} {group_enemy_title} from a rival',
+    'to steal the {unique_object_type} {group_enemy_title} from {person_name}',
+    'to steal the {unique_object_type} {group_enemy_title} from the {collective_enemy}',
+  ];
+  gen_data['quest_talk'] = [
+    'to discover who is murdering her peers, and why',
+    'to discover who is DOING SOMETHING, and why',
+    'to discover who is stealing her {plural_item}, and why',
+    'to discover who had stolen the {unique_object_type} {group_enemy_title}, and why',
+    'to deliver {collective_item} {plural_item} to {settlement_name} {settlement_type}',
+    'to deliver a message to {person_name}',
+    'to throw a party',
+    'to organise a party to celebrate {person_name}\'s birthday',
+    'to prepare for EVENT',
+    'to deliver a {adj_desc} ITEM to {person_name}',
+    'to talk to {person_name} who is currently {prep_place}',
+    'to ask {person_name} about the {adj_desc} topic of {plural_item}',
+    'to disguise himself as a {occupation} and DO SOMETHING',
+    'to negotiate with {person_name}',
+    'to give advice to {person_name}',
+    'to leave a message for the {quest_giver}',
+    'to persuade {person_name} to DO SOMETHING',
+    'to kidnap the {quest_giver}',
+    'to visit the {quest_giver} in the neighbouring {settlement_type}',
+    'to visit the {group_type} {prep_place}',
+    'to console {person_name}',
+    'to borrow an ITEM from {person_name}',
+    'to buy something from {person_name}',
+    'to intimidate {person_name}',
+    'to blackmail {person_name}',
+    'to find out {person_name}\'s darkest secret',
+    'to promote the image of {person_name}',
+    'to teach {person_name} a lesson',
+    'to train some {group_type}',
+    'to back the {quest_giver} in an argument about {plural_item}',
+    'to befriend {person_name}',
+    'to convince {person_name} to more trusting',
+    'to gain the trust of the {group_type} in this {settlement_type}',
+    'to gain the favour of the {quest_giver}',
+    'to give a GIFT to {person_name}',
+    'to woo {person_name}',
+    'to clear his name against charges of TREASON',
+    'to help the local {group_type} DO SOMETHING',
+    'to try the food that she cooked',
+    'to test the {modifier} ITEM she made',
+    'to spread a {adj_desc} rumour',
+    'to inform everyone of URGENT NEWS',
+    'to test {a_weapon} she had designed',
+    'to make an important CHOICE',
+    'to decide on a {adj_desc} CHOICE',
+    'to choose whether to buy {a_weapon} or {a_weapon}',
+    'to expose a spy working for {unique_enemy}',
+    'to expose a corrupt {occupation} who serves {unique_enemy}',
+    'to intimidate {person_name}',
+    'to find INFORMATION about the {quest_giver}',
+  ];
+  gen_data['quest_fight'] = [
+    'to recover {collective_item} {modifier} {plural_item} from the {unique_planetary_location}',
+    'to recover {collective_item} {plural_item} from the {unique_planetary_location}',
+    'to recover and destroy an evil {unique_object_type} from the {unique_danger_location}',
+    'to capture MONSTER',
+    'to slay MONSTER using {a_weapon}',
+    'to participate in a coliseum',
+    'to participate in a hunt for a {modifier} MONSTER',
+    'to test {a_weapon} she had designed',
+    'to defend the {building_type} from a group of MONSTERS',
+    'to defend the {settlement_type} from an army of {collective_enemy}',
+    'to expose a spy working for {unique_enemy}',
+    'to expose a corrupt {occupation} who serves {unique_enemy}',
+    'to find and explore the {unique_danger_location}',
+    'to explore the {unique_danger_location}',
+    'to navigate the {unique_danger_location}',
+    'to loot a {def_adj_pos} {race} {settlement_type}',
+    'to {hurt_place} the {settlement_type} controlled by the {collective_enemy}',
+    'to {hurt_place} a rival {settlement_type}',
+    'to {hurt_place} the space station controlled by the {collective_enemy} currently orbiting the planet',
+    'to retake the {settlement_type} from the {collective_enemy}',
+    'to capture {unique_enemy}',
+    'to assassinate {unique_enemy}, currently believed to be in {unique_danger_location}',
+    'to fight {person_name} in a duel',
+    'to defeat {unique_enemy}',
+    'to defeat the {collective_enemy} {prep_place}',
+    'to hunt down and kill {unique_enemy}',
+    'to hunt down and capture {unique_enemy}',
+    'to steal the {unique_object_type} {group_enemy_title} from a rival',
+    'to steal the {unique_object_type} {group_enemy_title} from {person_name}',
+    'to steal the {unique_object_type} {group_enemy_title} from the {collective_enemy}',
+    'to rescue the {quest_giver} from the {unique_danger_location}',
+    'to rescue the {group_type} from the {unique_danger_location}',
+    'to rescue the {settlement_type} of {settlement_name} from {unique_enemy}',
+    'to rescue the {settlement_type} of {settlement_name} from the {collective_enemy}',
+    'to rescue the {quest_giver} from the {collective_enemy}',
+    'to protect him from the {collective_enemy}',
+    'to thwart the monstrous plan of {unique_enemy}',
+    'to thwart the monstrous plan of the {collective_enemy}'
+  ];
+  gen_data['quest_build'] = [
+
+  ];
+  gen_data['quest_explore'] = [
+    '{quest_build}','{quest_fetch}',
+    'to recover {collective_item} {modifier} {plural_item} from the {unique_planetary_location}',
+    'to recover {collective_item} {plural_item} from the {unique_planetary_location}',
+    'to discover the hidden {unique_planetary_location}',
+    'to discover the fate of a group of {group_type} lost in the {unique_planetary_location}',
+    'to discover the fate of {collective_item} {plural_item} lost in the {unique_planetary_location}',
+    'to recover and destroy an evil {unique_object_type} from the {unique_danger_location}',
+    'to find and bring back lost a PET or FRIEND or ITEM, last seen {prep_place}',
+    'to find and bring back the {unique_object_type} {group_enemy_title}, lost in the {def_adj_pos} {geo_type}',
+    'to slay MONSTER and retrieve its BRAIN',
+    'to hunt MONSTER, which can be found in the {unique_planetary_location}',
+    'to tame MONSTER, which can be found in the {unique_geo_location}',
+    'to deliver {collective_item} {plural_item} to {settlement_name} {settlement_type}',
+    'to deliver a message to {person_name}',
+    'to deliver a {adj_desc} ITEM to {person_name}',
+    'to talk to {person_name} who is currently {prep_place}',
+    'to visit the {quest_giver} in the neighbouring {settlement_type}',
+    'to escort the {group_type} to {settlement_name} {settlement_type}',
+    'to escort a {modifier} ITEM to {settlement_name} {settlement_type}',
+    'to escort a group of {group_type} safely to {settlement_name} {settlement_type}',
+    'to find INFORMATION about the {quest_giver}',
+    'to investigate a STAR which fell into the {unique_planetary_location}',
+    'to investigate the mysterious EVENT at the {unique_planetary_location}',
+    'to investigate {strange_event} at the the {unique_planetary_location}',
+    'to investigate a mysterious OBJECT in nearby space',
+    'to find and explore the {unique_danger_location}',
+    'to complete a time trial challenge',
+    'to complete a puzzle challenge',
+    'to complete an obstacle course',
+    'to complete a footrace before {person_name} does',
+    'to explore the {settlement_name} {geo_type}',
+    'to explore the {unique_danger_location}',
+    'to navigate the {unique_danger_location}',
+    'to loot a {def_adj_pos} {race} {settlement_type}',
+    'to {hurt_place} the {settlement_type} controlled by the {collective_enemy}',
+    'to {hurt_place} a rival {settlement_type}',
+    'to {hurt_place} the space station controlled by the {collective_enemy} currently orbiting the planet',
+    'to retake the {settlement_type} from the {collective_enemy}',
+    'to capture {unique_enemy}',
+    'to assassinate {unique_enemy}, currently believed to be in {unique_danger_location}',
+    'to steal the {unique_object_type} {group_enemy_title} from the {collective_enemy}',
+    'to rescue the {quest_giver} from the {unique_danger_location}',
+    'to rescue the {group_type} from the {unique_danger_location}',
+    'to rescue the {settlement_type} of {settlement_name} from {unique_enemy}',
+    'to rescue the {settlement_type} of {settlement_name} from the {collective_enemy}',
+    'to rescue the {quest_giver} from the {collective_enemy}',
+  ];
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   gen_data['modifier'] = [
     // describes physical objects and items in particular
     'exotic','prized','master-work', 'hand-crafted', 'high-quality','valuable',
@@ -189,10 +358,10 @@
   ];
   gen_data['help_place'] = [
     //helpful action: to {transitive verb} a/the place
-    'help',
-    'build',
-    'extend',
-    'repair',
+    'help','assist',
+    'build','construct','establish',
+    'extend','upgrade',
+    'repair','reinforce',
     'complete',
     'decorate', 'furnish',
     'improve', 'clean',
@@ -258,6 +427,13 @@
     'beneath the {settlement_type}',
     'outside the {settlement_type}',
     'within the {settlement_type}'
+  ];
+  gen_data['any_building'] = [
+    '{building_type}','{settlement_type}',
+    '{settlement_name} {settlement_type}',
+    '{def_adj_pos} {building_type}',
+    '{def_adj_pos} {settlement_type}',
+    '{def_adj_pos} {race} {settlement_type}',
   ];
   gen_data['building_type'] = [
     'hut', 'house', 'building', 'mansion',
@@ -391,7 +567,7 @@
     'Stilda',
     'Hilda',
     'Nayah',
-    'Egol',
+    'Egol', 'Durum',
     'Brian', 'Henry',
     'Bohr',
     'Hiraki', 'Nuru','Esther','Koichi','Lana','Minoru',
@@ -527,5 +703,64 @@
 
     'The quest location can be accessed from the ship',
     'Moreover, the party will receive additional guidance during their quest',
+  ];
+
+
+
+
+  gen_data['armor'] = {
+    '01-25': 'civilian clothes',
+    '26-30': 'iron armor',
+    '31-40': 'steel armor',
+    '41-50': 'titanium armor',
+    '51-60': 'durasteel armor',
+    '61-70': 'ferozium armor',
+    '71-80': 'rubium armor',
+    '81-90': 'cerulium armor',
+    '91-99': 'impervium armor',
+       '00': '???'
+  };
+  gen_data['tool'] = [
+    'a matter manipulator','a hoe','a pickaxe','a drill','a bug net','a lantern',
+    '{offhand}'
+  ];
+  gen_data['a_weapon'] = [
+    '{one_h_weapon}','{two_h_weapon}',
+    '{one_h_ranged_weapon}','{two_h_ranged_weapon}',
+    '{offhand}'
+    //'{one_h_weapon} and {offhand}',
+    //'{one_h_weapon} and {tool}',
+    //'{one_h_weapon} and {one_h_weapon}',
+    
+  ];
+  gen_data['one_h_weapon'] = [
+    '{one_h_melee_weapon}',
+    '{one_h_ranged_weapon}'
+  ];
+  gen_data['two_h_weapon'] = [
+    '{two_h_melee_weapon}',
+    '{two_h_ranged_weapon}'
+  ];
+  gen_data['one_h_melee_weapon'] = [
+    'a mace', 'a one-handed sword',
+    'an axe', 'a stick', 'a club', 'a knife', 'a dagger', 'a shiv'
+  ];
+  gen_data['two_h_melee_weapon'] = [
+    'a battleaxe', 'a spear','a staff','a stave', 'a broadsword',
+    'a two-handed sword', 'a poleaxe', 'a warhammer',
+    'a rust sword', 'a slave sword'
+  ];
+  gen_data['one_h_ranged_weapon'] = [
+    'a pistol','a revolver', 'a machine pistol', 'a laser',
+    'a bone pistol', 'a blaster'
+  ];
+  gen_data['two_h_ranged_weapon'] = [
+    'a longbow and arrows', 'a heavy crossbow','a rocket launcher','a rifle','a shotgun',
+    'a grenade launcher', 'an assault rifle', 'a flamethrower', 'a sniper rifle',
+    'a hunting bow', 'a harpoon gun'
+  ];
+  gen_data['offhand'] = [
+    'a shield', 'a torch', 'a flashlight', 'a grappling hook',
+    'a throwing axe', 'a throwing dagger', 'a throwing dart', 'a throwing needle'
   ];
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
