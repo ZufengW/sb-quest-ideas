@@ -2,6 +2,7 @@
 // generator.js
 
   var gen_data = {};
+  var curr_type='main';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // EXTRA FUNCTION FOR DISPLAYING in the html element with id="output"
@@ -12,10 +13,22 @@
     b=generate_list(z,b);
     a.value=b.join("\n");
   }
-  
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// NEW FUNCTION for the drop-down menu to switch between quests and everything else
+// i.e.  onchange="select_menu(this.value);"      where this.value is a string
+
+  function select_menu(val) {
+    if(val[0]=='{') {                          // if any quest type was selected
+      curr_type='main';
+      //alert("!curr_type = "+curr_type);      // use alerts for testing purposes
+    } else {                                   // something from other
+      curr_type=val;
+    }
+  }
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // NEW FUNCTION for changing the content of a single-value linking table
-// type is the 'name' of the table, val is new 'value' to put (both strings)
+// type is the 'name' of the table, val is new 'value' to put (both string)
 
   function change_content(type,val) {
     gen_data[type][0] = val;
