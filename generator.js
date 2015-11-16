@@ -1,7 +1,5 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // generator.js
-// written and released to the public domain by drow <drow@bin.sh>
-// http://creativecommons.org/publicdomain/zero/1.0/
 
   var gen_data = {};
 
@@ -23,7 +21,7 @@ function more_random(z) {
         return expand_tokens(string);
       }
     }
-    return '';
+    return '<'+type+'>';  // more informative, returns <type> if type not exist
   }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -60,7 +58,7 @@ function more_random(z) {
         if (idx >= r[0] && idx <= r[1]) { return list[key]; }
       }
     }
-    return '';
+    return '<table error>'; // means something wrong with the table
   }
   function scale_table (list) {
     var len = 0;
