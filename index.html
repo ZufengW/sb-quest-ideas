@@ -12,14 +12,36 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -->
   </head>
-  <h3>Random Generator Test</h3>
+  <h3>Starbound Quest Ideas</h3>
   <body>
     <form method="get" onsubmit="return false;">
-      <p><textarea id="output" cols="100" rows="30" readonly></textarea></p>
-      <p><input type="button" value="Generate" onclick="more_random('main');" /></p>
+      <p><textarea id="output" cols="100" rows="30"></textarea></p>
+      <p>
+        <input type="button" value="Generate" onclick="more_random(curr_type);" />
+        <select id="selectType" name="selectType" onchange="change_content('quest_type',this.value);select_menu(this.value);">
+          <optgroup label="Quests">
+            <option value='{quest_all}'>All</option>
+            <option value='{quest_fetch}'>Fetch</option>
+            <option value='{quest_explore}'>Travel/Explore</option>
+            <option value='{quest_talk}'>Talk</option>
+            <option value='{quest_fight}'>Fight</option>
+            <option value='{quest_build}'>Build</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option onselect="curr_type='quest_giver';" value='quest_giver'>NPCs</option>
+            <option onselect="curr_type='occupation';"value='occupation'>Occupation</option>
+            <option onselect="curr_type='any_building';"value='any_building'> Buildings</option>
+            <option onselect="curr_type='unique_danger_location';"value='unique_danger_location'>Danger locations</option>
+            <option onselect="curr_type='unique_planetary_location';"value='unique_planetary_location'>Planetary locations</option>
+            <option onselect="curr_type='unique_enemy';"value='unique_enemy'>Unique enemy</option>
+            <option onselect="curr_type='collective_enemy';"value='collective_enemy'>Collective enemy</option>
+          </optgroup>
+        </select>
+      </p>
     </form>
-     <h6>By Oxidis, inspired by donjon's Fantasy Random Generator</h6>
-     <h6>Many of the words, especially the names and the ones in CAPS, can be substituted for others.</h6>
-     <h6>Last updated 16/11/2015</h6>
+
+    <h6>By Oxidis, inspired by donjon's Fantasy Random Generator</h6>
+    <h6>Many of the words, especially the names and the ones in CAPS, can be substituted for others.</h6>
+    <h6>Last updated 16/11/2015</h6>
   </body>
 </html>
